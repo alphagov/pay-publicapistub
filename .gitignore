@@ -1,0 +1,8 @@
+# IntelliJ gubbins
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Mac gubbins
+.DS_Store
