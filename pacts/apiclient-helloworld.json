@@ -1,0 +1,35 @@
+{
+  "consumer": {
+    "name": "apiclient"
+  },
+  "provider": {
+    "name": "helloworld"
+  },
+  "interactions": [
+    {
+      "description": "a valid hello world request",
+      "providerState": "a hello exists",
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/helloworld",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "message": "hello world"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
