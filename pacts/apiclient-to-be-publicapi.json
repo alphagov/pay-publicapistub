@@ -1,0 +1,512 @@
+{
+  "consumer": {
+    "name": "apiclient-to-be"
+  },
+  "provider": {
+    "name": "publicapi"
+  },
+  "interactions": [
+    {
+      "description": "empty string supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/empty-string-payments",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference": "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": ""
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^.*\s$"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.address": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "language": "en",
+            "description": "Your Service Description",
+            "reference": "12345",
+            "email": "your email",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "cy is supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/cy-requested-payments",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "cy"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^cy$"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "language": "cy",
+            "description": "Your Service Description",
+            "reference": "12345",
+            "email": "your email",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^cy$"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "en is supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/en-requested-payments",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "en"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "language": "en",
+            "description": "Your Service Description",
+            "reference": "12345",
+            "email": "your email",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "something other than empty string, en or cy supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/invalid-language-requested-payments",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "zzz"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "errors": [
+            {
+              "language": "zzz",
+              "code": "P0102",
+              "description": "invalid attribute value: language. Must be cy or en, or left empty"
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.errors[0].language": {
+          "match": "regex",
+          "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+        },
+        "$.body.errors[0].code": {
+          "match": "type"
+        },
+        "$.body.errors[0].description": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "language field is missing",
+      "request": {
+        "method": "POST",
+        "path": "/v1/language-field-missing-payments",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "errors": [
+            {
+              "field": "language",
+              "code": "P0101",
+              "description": "missing attribute: language. The request you sent is missing the language attribute"
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.errors[0].field": {
+          "match": "type"
+        },
+        "$.body.errors[0].code": {
+          "match": "type"
+        },
+        "$.body.errors[0].description": {
+          "match": "type"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
+
