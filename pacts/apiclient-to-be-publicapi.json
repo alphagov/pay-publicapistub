@@ -501,6 +501,182 @@
           "match": "type"
         }
       }
+    },
+    {
+      "description": "Surcharge applied",
+      "request": {
+        "method": "GET",
+        "path": "/v1/payments/payment-id",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": "Bearer BEARER_TOKEN"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "surcharge": 250,
+            "total_amount": 1450,
+            "state": {
+              "status": "created",
+              "finished": true
+            },
+            "description": "Payment description",
+            "reference": "some-reference-to-this-payment",
+            "email": "mail@example.com",
+            "payment_id": "payment-id",
+            "payment_provider": "Sandbox",
+            "return_url": "https://service.example.com/some-reference-to-this-payment",
+            "card_brand": "Visa",
+            "created_date": "2016-01-15T16:30:56Z",
+            "card_details": {
+              "last_digits_card_number": "1234",
+              "cardholder_name": "Mr. Payment",
+              "expiry_date": "12/19",
+              "card_brand": "Mastercard",
+              "billing_address": {
+                "line1": "line1",
+                "line2": "line2",
+                "postcode": "AB2 DEF",
+                "city": "city",
+                "country": "UK"
+              }
+            },
+            "refund_summary": {
+              "status": "available",
+              "amount_available": 14500,
+              "amount_submitted": 0
+            },
+            "settlement_summary": {
+              "captured_date": "2016-01-15",
+              "capture_submit_time": "2016-01-15T16:30:56Z"
+            },
+            "_links": {
+              "self": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id",
+                "method": "GET"
+              },
+              "next_url": {
+                "href": "https://frontend.example.com/charge/payment-id?chargeTokenId=82347",
+                "method": "GET"
+              },
+              "next_url_post": {
+                "params": {},
+                "type": "",
+                "href": "https://frontend.example.com/charge/1?chargeTokenId=82347",
+                "method": "POST"
+              },
+              "events": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/events",
+                "method": "GET"
+              },
+              "refunds": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/refunds",
+                "method": "GET"
+              },
+              "cancel": {
+                "params": {},
+                "type": "",
+                "href": "https://publicapi.example.com/v1/payments/payment-id/cancel",
+                "method": "POST"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Surcharge not applied",
+      "request": {
+        "method": "GET",
+        "path": "/v1/payments/payment-id",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": "Bearer BEARER_TOKEN"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "surcharge": 0,
+            "total_amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true
+            },
+            "description": "Payment description",
+            "reference": "some-reference-to-this-payment",
+            "email": "mail@example.com",
+            "payment_id": "payment-id",
+            "payment_provider": "Sandbox",
+            "return_url": "https://service.example.com/some-reference-to-this-payment",
+            "card_brand": "Visa",
+            "created_date": "2016-01-15T16:30:56Z",
+            "card_details": {
+              "last_digits_card_number": "1234",
+              "cardholder_name": "Mr. Payment",
+              "expiry_date": "12/19",
+              "card_brand": "Mastercard",
+              "billing_address": {
+                "line1": "line1",
+                "line2": "line2",
+                "postcode": "AB2 DEF",
+                "city": "city",
+                "country": "UK"
+              }
+            },
+            "refund_summary": {
+              "status": "available",
+              "amount_available": 14500,
+              "amount_submitted": 0
+            },
+            "settlement_summary": {
+              "captured_date": "2016-01-15",
+              "capture_submit_time": "2016-01-15T16:30:56Z"
+            },
+            "_links": {
+              "self": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id",
+                "method": "GET"
+              },
+              "next_url": {
+                "href": "https://frontend.example.com/charge/payment-id?chargeTokenId=82347",
+                "method": "GET"
+              },
+              "next_url_post": {
+                "params": {},
+                "type": "",
+                "href": "https://frontend.example.com/charge/1?chargeTokenId=82347",
+                "method": "POST"
+              },
+              "events": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/events",
+                "method": "GET"
+              },
+              "refunds": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/refunds",
+                "method": "GET"
+              },
+              "cancel": {
+                "params": {},
+                "type": "",
+                "href": "https://publicapi.example.com/v1/payments/payment-id/cancel",
+                "method": "POST"
+              }
+            }
+          }
+        }
+      }
     }
   ],
   "metadata": {
