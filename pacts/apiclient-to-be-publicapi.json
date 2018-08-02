@@ -1,0 +1,729 @@
+{
+  "consumer": {
+    "name": "apiclient-to-be"
+  },
+  "provider": {
+    "name": "publicapi"
+  },
+  "interactions": [
+    {
+      "description": "empty string supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-1",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference": "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "",
+          "email": "foo@bar.com",
+          "address": {
+            "line1": "address line 1",
+            "line2": "address line 2",
+            "postcode": "AB1 2CD",
+            "city": "address city",
+            "country": "UK"
+          }
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^.*\\s$"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.address": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "reference": "12345",
+            "description": "Your Service Description",
+            "language": "en",
+            "email": "foo@bar.com",
+            "address": {
+              "line1": "address line 1",
+              "line2": "address line 2",
+              "postcode": "AB1 2CD",
+              "city": "address city",
+              "country": "UK"
+            },
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay-empty",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.address": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "cy is supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-2",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "language": "cy",
+          "email": "foo@bar.com",
+          "address": {
+            "line1": "address line 1",
+            "line2": "address line 2",
+            "postcode": "AB1 2CD",
+            "city": "address city",
+            "country": "UK"
+          },
+          "return_url": "https://service-name.gov.uk/transactions/12345"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^cy$"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.address": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "reference": "12345",
+            "description": "Your Service Description",
+            "language": "cy",
+            "email":"foo@bar.com",
+            "address": {
+              "line1": "address line 1",
+              "line2": "address line 2",
+              "postcode": "AB1 2CD",
+              "city": "address city",
+              "country": "UK"
+            },
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^cy$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.address": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "en is supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-3",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "en"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true,
+              "message": "User cancelled the payment",
+              "code": "P0030"
+            },
+            "reference": "12345",
+            "description": "Your Service Description",
+            "language": "en",
+            "email": "foo@bar.com",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay-en",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "something other than empty string, en or cy supplied in language field",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-4",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "language": "zzz"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "errors": [
+            {
+              "language": "zzz",
+              "code": "P0102",
+              "description": "invalid attribute value: language. Must be cy or en, or left empty"
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.errors[0].language": {
+          "match": "regex",
+          "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+        },
+        "$.body.errors[0].code": {
+          "match": "type"
+        },
+        "$.body.errors[0].description": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "language field is missing",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-5",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference" : "12345",
+          "description": "New passport application",
+          "return_url": "https://service-name.gov.uk/transactions/12345"
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "errors": [
+            {
+              "field": "language",
+              "code": "P0101",
+              "description": "missing attribute: language. The request you sent is missing the language attribute"
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.errors[0].field": {
+          "match": "type"
+        },
+        "$.body.errors[0].code": {
+          "match": "type"
+        },
+        "$.body.errors[0].description": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "corporate surcharge applied",
+      "request": {
+        "method": "GET",
+        "path": "/v1/payments-6",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": "Bearer BEARER_TOKEN"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "surcharge": 250,
+            "total_amount": 1450,
+            "state": {
+              "status": "created",
+              "finished": true
+            },
+            "description": "Payment description",
+            "reference": "some-reference-to-this-payment",
+            "email": "mail@example.com",
+            "payment_id": "payment-id",
+            "payment_provider": "Sandbox",
+            "return_url": "https://service.example.com/some-reference-to-this-payment",
+            "card_brand": "Visa",
+            "created_date": "2016-01-15T16:30:56Z",
+            "card_details": {
+              "last_digits_card_number": "1234",
+              "cardholder_name": "Mr. Payment",
+              "expiry_date": "12/19",
+              "card_brand": "Mastercard",
+              "billing_address": {
+                "line1": "line1",
+                "line2": "line2",
+                "postcode": "AB2 DEF",
+                "city": "city",
+                "country": "UK"
+              }
+            },
+            "refund_summary": {
+              "status": "available",
+              "amount_available": 1450,
+              "amount_submitted": 0
+            },
+            "settlement_summary": {
+              "captured_date": "2016-01-15",
+              "capture_submit_time": "2016-01-15T16:30:56Z"
+            },
+            "_links": {
+              "self": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id",
+                "method": "GET"
+              },
+              "next_url": {
+                "href": "https://frontend.example.com/charge/payment-id?chargeTokenId=82347",
+                "method": "GET"
+              },
+              "next_url_post": {
+                "params": {},
+                "type": "",
+                "href": "https://frontend.example.com/charge/1?chargeTokenId=82347",
+                "method": "POST"
+              },
+              "events": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/events",
+                "method": "GET"
+              },
+              "refunds": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/refunds",
+                "method": "GET"
+              },
+              "cancel": {
+                "params": {},
+                "type": "",
+                "href": "https://publicapi.example.com/v1/payments/payment-id/cancel",
+                "method": "POST"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "corporate surcharge not applied",
+      "request": {
+        "method": "GET",
+        "path": "/v1/payments-7",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": "Bearer BEARER_TOKEN"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "surcharge": 0,
+            "total_amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": true
+            },
+            "description": "Payment description",
+            "reference": "some-reference-to-this-payment",
+            "email": "mail@example.com",
+            "payment_id": "payment-id",
+            "payment_provider": "Sandbox",
+            "return_url": "https://service.example.com/some-reference-to-this-payment",
+            "card_brand": "Visa",
+            "created_date": "2016-01-15T16:30:56Z",
+            "card_details": {
+              "last_digits_card_number": "1234",
+              "cardholder_name": "Mr. Payment",
+              "expiry_date": "12/19",
+              "card_brand": "Mastercard",
+              "billing_address": {
+                "line1": "line1",
+                "line2": "line2",
+                "postcode": "AB2 DEF",
+                "city": "city",
+                "country": "UK"
+              }
+            },
+            "refund_summary": {
+              "status": "available",
+              "amount_available": 14500,
+              "amount_submitted": 0
+            },
+            "settlement_summary": {
+              "captured_date": "2016-01-15",
+              "capture_submit_time": "2016-01-15T16:30:56Z"
+            },
+            "_links": {
+              "self": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id",
+                "method": "GET"
+              },
+              "next_url": {
+                "href": "https://frontend.example.com/charge/payment-id?chargeTokenId=82347",
+                "method": "GET"
+              },
+              "next_url_post": {
+                "params": {},
+                "type": "",
+                "href": "https://frontend.example.com/charge/1?chargeTokenId=82347",
+                "method": "POST"
+              },
+              "events": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/events",
+                "method": "GET"
+              },
+              "refunds": {
+                "href": "https://publicapi.example.com/v1/payments/payment-id/refunds",
+                "method": "GET"
+              },
+              "cancel": {
+                "params": {},
+                "type": "",
+                "href": "https://publicapi.example.com/v1/payments/payment-id/cancel",
+                "method": "POST"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
+
