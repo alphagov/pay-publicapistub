@@ -10,7 +10,7 @@
       "description": "empty string supplied in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/empty-string-payments",
+        "path": "/v1/payments-1",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Accept": "application/json"
@@ -45,7 +45,7 @@
           },
           "$.body.language": {
             "match": "regex",
-            "regex": "^.*\s$"
+            "regex": "^.*\\s$"
           },
           "$.body.email": {
             "match": "type"
@@ -81,7 +81,7 @@
               "country": "UK"
             },
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
-            "payment_provider": "worldpay",
+            "payment_provider": "worldpay-empty",
             "return_url": "https://service.example.com/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
@@ -157,7 +157,7 @@
       "description": "cy is supplied in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/cy-requested-payments",
+        "path": "/v1/payments-2",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Accept": "application/json"
@@ -304,7 +304,7 @@
       "description": "en is supplied in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/en-requested-payments",
+        "path": "/v1/payments-3",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Accept": "application/json"
@@ -354,7 +354,7 @@
             "language": "en",
             "email": "foo@bar.com",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
-            "payment_provider": "worldpay",
+            "payment_provider": "worldpay-en",
             "return_url": "https://service.example.com/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
@@ -427,7 +427,7 @@
       "description": "something other than empty string, en or cy supplied in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/invalid-language-requested-payments",
+        "path": "/v1/payments-4",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Accept": "application/json"
@@ -455,7 +455,6 @@
           "$.body.language": {
             "match": "regex",
             "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
-
           }
         }
       },
@@ -491,7 +490,7 @@
       "description": "language field is missing",
       "request": {
         "method": "POST",
-        "path": "/v1/language-field-missing-payments",
+        "path": "/v1/payments-5",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Accept": "application/json"
@@ -545,10 +544,10 @@
       }
     },
     {
-      "description": "Surcharge applied",
+      "description": "corporate surcharge applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments/payment-id",
+        "path": "/v1/payments-6",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
@@ -633,10 +632,10 @@
       }
     },
     {
-      "description": "Surcharge not applied",
+      "description": "corporate surcharge not applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments/payment-id",
+        "path": "/v1/payments-7",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
