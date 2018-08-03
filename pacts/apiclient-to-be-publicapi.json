@@ -65,9 +65,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -212,9 +210,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -345,9 +341,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -565,7 +559,7 @@
             "total_amount": 1450,
             "state": {
               "status": "created",
-              "finished": true
+              "finished": false
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
@@ -653,7 +647,7 @@
             "total_amount": 1200,
             "state": {
               "status": "created",
-              "finished": true
+              "finished": false
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
