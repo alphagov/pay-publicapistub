@@ -71,4 +71,4 @@ $ curl -d '{"amount": 50000,"reference": "12345","description": "New passport ap
 
 ### Creating a payment - `en` (English language) supplied in language field and delayed capture set to `true`
 
-$ curl -d '{"amount": 50000,"reference": "12345","description": "New passport application","return_url": "https://service-name.gov.uk/transactions/12345","language": "en", "delayed_capture": true}' -H 'Authorization: BEARER_TOKEN' -H 'Accept: application/json' http://localhost:8000/v1/payments-3
+$ curl -d '{"amount": 50000,"reference": "12345","description": "New passport application","return_url": "https://service-name.gov.uk/transactions/12345","language": "en", "delayed_capture": true}' -H 'Authorization: BEARER_TOKEN' -H 'Accept: application/json' http://localhost:8000/v1/payments-9
