@@ -19,16 +19,8 @@
           "amount": 50000,
           "reference": "12345",
           "description": "New passport application",
-          "return_url": "https://service-name.gov.uk/transactions/12345",
           "language": "",
-          "email": "foo@bar.com",
-          "address": {
-            "line1": "address line 1",
-            "line2": "address line 2",
-            "postcode": "AB1 2CD",
-            "city": "address city",
-            "country": "UK"
-          }
+          "return_url": "https://service-name.gov.uk/transactions/12345"
         },
         "matchingRules": {
           "$.body.amount": {
@@ -70,7 +62,7 @@
             "reference": "12345",
             "description": "Your Service Description",
             "language": "en",
-            "email": "foo@bar.com",
+            "email": "",
             "address": {
               "line1": "address line 1",
               "line2": "address line 2",
@@ -165,14 +157,6 @@
           "reference" : "12345",
           "description": "New passport application",
           "language": "cy",
-          "email": "foo@bar.com",
-          "address": {
-            "line1": "address line 1",
-            "line2": "address line 2",
-            "postcode": "AB1 2CD",
-            "city": "address city",
-            "country": "UK"
-          },
           "return_url": "https://service-name.gov.uk/transactions/12345"
         },
         "matchingRules": {
@@ -215,7 +199,7 @@
             "reference": "12345",
             "description": "Your Service Description",
             "language": "cy",
-            "email":"foo@bar.com",
+            "email":"",
             "address": {
               "line1": "address line 1",
               "line2": "address line 2",
@@ -309,8 +293,8 @@
           "amount": 50000,
           "reference" : "12345",
           "description": "New passport application",
-          "return_url": "https://service-name.gov.uk/transactions/12345",
-          "language": "en"
+          "language": "en",
+          "return_url": "https://service-name.gov.uk/transactions/12345"
         },
         "matchingRules": {
           "$.body.amount": {
@@ -346,7 +330,7 @@
             "reference": "12345",
             "description": "Your Service Description",
             "language": "en",
-            "email": "foo@bar.com",
+            "email": "",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-en",
             "return_url": "https://service.example.com/12345",
@@ -430,8 +414,8 @@
           "amount": 50000,
           "reference" : "12345",
           "description": "New passport application",
-          "return_url": "https://service-name.gov.uk/transactions/12345",
-          "language": "zzz"
+          "language": "test",
+          "return_url": "https://service-name.gov.uk/transactions/12345"
         },
         "matchingRules": {
           "$.body.amount": {
@@ -710,6 +694,260 @@
               }
             }
           }
+        }
+      }
+    },
+    {
+      "description": "en is supplied in language field and email/address is pre-populated",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-8",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference": "12345",
+          "description": "New passport application",
+          "language": "en",
+          "email": "foo@bar.com",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "billing_address": {
+            "line1": "address line 1",
+            "line2": "address line 2",
+            "postcode": "AB1 2CD",
+            "city": "address city",
+            "country": "UK"
+          }
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": false
+            },
+            "reference": "12345",
+            "description": "Your Service Description",
+            "language": "en",
+            "email": "",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay-en",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "en is supplied in language field with delayed capture set to true",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-9",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Accept": "application/json"
+        },
+        "body": {
+          "amount": 50000,
+          "reference": "12345",
+          "description": "New passport application",
+          "language": "en",
+          "return_url": "https://service-name.gov.uk/transactions/12345",
+          "delayed_capture": true
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.return_url": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.delayed_capture": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "payment": {
+            "amount": 1200,
+            "state": {
+              "status": "created",
+              "finished": false
+            },
+            "reference": "12345",
+            "description": "Your Service Description",
+            "language": "en",
+            "email": "",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay-en",
+            "return_url": "https://service.example.com/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": null,
+            "next_url_post": {
+              "type": "multipart/form-data",
+              "params": {
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": null,
+            "refunds": null,
+            "cancel": null
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.payment.amount": {
+          "match": "type"
+        },
+        "$.body.payment.state": {
+          "match": "type"
+        },
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
+          "match": "type"
         }
       }
     }
