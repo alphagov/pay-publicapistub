@@ -45,7 +45,7 @@
           },
           "$.body.language": {
             "match": "regex",
-            "regex": "^.*\\s$"
+            "regex": "^(?![\\s\\S])"
           },
           "$.body.email": {
             "match": "type"
@@ -65,9 +65,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -212,9 +210,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -345,9 +341,7 @@
             "amount": 1200,
             "state": {
               "status": "created",
-              "finished": true,
-              "message": "User cancelled the payment",
-              "code": "P0030"
+              "finished": false
             },
             "reference": "12345",
             "description": "Your Service Description",
@@ -547,7 +541,7 @@
       "description": "corporate surcharge applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-6",
+        "path": "/v1/payments-6/12345",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
@@ -565,7 +559,7 @@
             "total_amount": 1450,
             "state": {
               "status": "created",
-              "finished": true
+              "finished": false
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
@@ -635,7 +629,7 @@
       "description": "corporate surcharge not applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-7",
+        "path": "/v1/payments-7/12345",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
@@ -653,7 +647,7 @@
             "total_amount": 1200,
             "state": {
               "status": "created",
-              "finished": true
+              "finished": false
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
