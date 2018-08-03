@@ -45,7 +45,7 @@
           },
           "$.body.language": {
             "match": "regex",
-            "regex": "^.*\\s$"
+            "regex": "^(?![\\s\\S])"
           },
           "$.body.email": {
             "match": "type"
@@ -541,7 +541,7 @@
       "description": "corporate surcharge applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-6",
+        "path": "/v1/payments-6/12345",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
@@ -629,7 +629,7 @@
       "description": "corporate surcharge not applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-7",
+        "path": "/v1/payments-7/12345",
         "headers": {
           "Accept": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
