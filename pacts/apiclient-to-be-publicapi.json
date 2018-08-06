@@ -13,7 +13,7 @@
         "path": "/v1/payments-1",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -54,25 +54,17 @@
         },
         "body": {
           "payment": {
-            "amount": 1200,
+            "amount": 50000,
             "state": {
               "status": "created",
               "finished": false
             },
             "reference": "12345",
-            "description": "Your Service Description",
+            "description": "New passport application",
             "language": "en",
-            "email": "",
-            "address": {
-              "line1": "address line 1",
-              "line2": "address line 2",
-              "postcode": "AB1 2CD",
-              "city": "address city",
-              "country": "UK"
-            },
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-empty",
-            "return_url": "https://service.example.com/12345",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
           "_links": {
@@ -80,17 +72,30 @@
               "href": "https://an.example.link/from/payment/platform",
               "method": "GET"
             },
-            "next_url": null,
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
             "next_url_post": {
-              "type": "multipart/form-data",
+              "type": "application/x-www-formurlencoded",
               "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
               },
               "href": "https://an.example.link/from/payment/platform",
               "method": "POST"
             },
-            "events": null,
-            "refunds": null,
-            "cancel": null
+            "events": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+                "method": "GET"
+            },
+            "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+            },
+            "cancel": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+                "method": "POST"
+            }
           }
         }
       },
@@ -191,25 +196,17 @@
         },
         "body": {
           "payment": {
-            "amount": 1200,
+            "amount": 50000,
             "state": {
               "status": "created",
               "finished": false
             },
             "reference": "12345",
-            "description": "Your Service Description",
+            "description": "New passport application",
             "language": "cy",
-            "email":"",
-            "address": {
-              "line1": "address line 1",
-              "line2": "address line 2",
-              "postcode": "AB1 2CD",
-              "city": "address city",
-              "country": "UK"
-            },
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay",
-            "return_url": "https://service.example.com/12345",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
           "_links": {
@@ -217,17 +214,30 @@
               "href": "https://an.example.link/from/payment/platform",
               "method": "GET"
             },
-            "next_url": null,
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
             "next_url_post": {
-              "type": "multipart/form-data",
+              "type": "application/x-www-formurlencoded",
               "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
               },
               "href": "https://an.example.link/from/payment/platform",
               "method": "POST"
             },
-            "events": null,
-            "refunds": null,
-            "cancel": null
+            "events": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+                "method": "GET"
+            },
+            "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+            },
+            "cancel": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+                "method": "POST"
+            }
           }
         }
       },
@@ -322,18 +332,17 @@
         },
         "body": {
           "payment": {
-            "amount": 1200,
+            "amount": 50000,
             "state": {
               "status": "created",
               "finished": false
             },
             "reference": "12345",
-            "description": "Your Service Description",
+            "description": "New passport application",
             "language": "en",
-            "email": "",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
-            "payment_provider": "worldpay-en",
-            "return_url": "https://service.example.com/12345",
+            "payment_provider": "worldpay-empty",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
           "_links": {
@@ -341,17 +350,30 @@
               "href": "https://an.example.link/from/payment/platform",
               "method": "GET"
             },
-            "next_url": null,
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
             "next_url_post": {
-              "type": "multipart/form-data",
+              "type": "application/x-www-formurlencoded",
               "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
               },
               "href": "https://an.example.link/from/payment/platform",
               "method": "POST"
             },
-            "events": null,
-            "refunds": null,
-            "cancel": null
+            "events": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+                "method": "GET"
+            },
+            "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+            },
+            "cancel": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+                "method": "POST"
+            }
           }
         }
       },
@@ -542,8 +564,8 @@
             "surcharge": 250,
             "total_amount": 1450,
             "state": {
-              "status": "created",
-              "finished": false
+              "status": "success",
+              "finished": true
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
@@ -580,16 +602,8 @@
                 "href": "https://publicapi.example.com/v1/payments/payment-id",
                 "method": "GET"
               },
-              "next_url": {
-                "href": "https://frontend.example.com/charge/payment-id?chargeTokenId=82347",
-                "method": "GET"
-              },
-              "next_url_post": {
-                "params": {},
-                "type": "",
-                "href": "https://frontend.example.com/charge/1?chargeTokenId=82347",
-                "method": "POST"
-              },
+              "next_url": null,
+              "next_url_post": null,
               "events": {
                 "href": "https://publicapi.example.com/v1/payments/payment-id/events",
                 "method": "GET"
@@ -598,12 +612,7 @@
                 "href": "https://publicapi.example.com/v1/payments/payment-id/refunds",
                 "method": "GET"
               },
-              "cancel": {
-                "params": {},
-                "type": "",
-                "href": "https://publicapi.example.com/v1/payments/payment-id/cancel",
-                "method": "POST"
-              }
+              "cancel": null
             }
           }
         }
@@ -651,7 +660,7 @@
                 "line2": "line2",
                 "postcode": "AB2 DEF",
                 "city": "city",
-                "country": "UK"
+                "country": "GB"
               }
             },
             "refund_summary": {
@@ -718,7 +727,7 @@
             "line2": "address line 2",
             "postcode": "AB1 2CD",
             "city": "address city",
-            "country": "UK"
+            "country": "GB"
           }
         },
         "matchingRules": {
@@ -755,28 +764,50 @@
             "reference": "12345",
             "description": "Your Service Description",
             "language": "en",
-            "email": "",
+            "email": "foo@bar.com",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-en",
-            "return_url": "https://service.example.com/12345",
-            "created_date": "2016-01-21T17:15:00Z"
+            "return_url": "https://service-name.gov.uk/transactions/12345",
+            "created_date": "2016-01-21T17:15:00Z",
+            "card_details": {
+              "billing_address": {
+                "line1": "address line 1",
+                "line2": "address line 2",
+                "postcode": "AB1 2CD",
+                "city": "address city",
+                "country": "GB"
+              }
+            },
           },
           "_links": {
             "self": {
               "href": "https://an.example.link/from/payment/platform",
               "method": "GET"
             },
-            "next_url": null,
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
             "next_url_post": {
-              "type": "multipart/form-data",
+              "type": "application/x-www-formurlencoded",
               "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
               },
               "href": "https://an.example.link/from/payment/platform",
               "method": "POST"
             },
-            "events": null,
-            "refunds": null,
-            "cancel": null
+            "events": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+                "method": "GET"
+            },
+            "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+            },
+            "cancel": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+                "method": "POST"
+            }
           }
         }
       },
@@ -880,7 +911,6 @@
             "reference": "12345",
             "description": "Your Service Description",
             "language": "en",
-            "email": "",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-en",
             "return_url": "https://service.example.com/12345",
@@ -891,17 +921,30 @@
               "href": "https://an.example.link/from/payment/platform",
               "method": "GET"
             },
-            "next_url": null,
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
             "next_url_post": {
-              "type": "multipart/form-data",
+              "type": "application/x-www-formurlencoded",
               "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
               },
               "href": "https://an.example.link/from/payment/platform",
               "method": "POST"
             },
-            "events": null,
-            "refunds": null,
-            "cancel": null
+            "events": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+                "method": "GET"
+            },
+            "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+            },
+            "cancel": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+                "method": "POST"
+            }
           }
         }
       },
