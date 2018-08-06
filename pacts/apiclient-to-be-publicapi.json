@@ -7,155 +7,13 @@
   },
   "interactions": [
     {
-      "description": "empty string supplied in language field",
+      "description": "cy is supplied in language field",
       "request": {
         "method": "POST",
         "path": "/v1/payments-1",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Content-Type": "application/json"
-        },
-        "body": {
-          "amount": 50000,
-          "reference": "12345",
-          "description": "New passport application",
-          "language": "",
-          "return_url": "https://service-name.gov.uk/transactions/12345"
-        },
-        "matchingRules": {
-          "$.body.amount": {
-            "match": "type"
-          },
-          "$.body.reference": {
-            "match": "type"
-          },
-          "$.body.description": {
-            "match": "type"
-          },
-          "$.body.return_url": {
-            "match": "type"
-          },
-          "$.body.language": {
-            "match": "regex",
-            "regex": "^(?![\\s\\S])"
-          },
-          "$.body.email": {
-            "match": "type"
-          },
-          "$.body.address": {
-            "match": "type"
-          }
-        }
-      },
-      "response": {
-        "status": 201,
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "payment": {
-            "amount": 50000,
-            "state": {
-              "status": "created",
-              "finished": false
-            },
-            "reference": "12345",
-            "description": "New passport application",
-            "language": "en",
-            "payment_id": "hu20sqlact5260q2nanm0q8u93",
-            "payment_provider": "worldpay-empty",
-            "return_url": "https://service-name.gov.uk/transactions/12345",
-            "created_date": "2016-01-21T17:15:00Z"
-          },
-          "_links": {
-            "self": {
-              "href": "https://an.example.link/from/payment/platform",
-              "method": "GET"
-            },
-            "next_url": {
-              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
-              "method": "GET"
-            },
-            "next_url_post": {
-              "type": "application/x-www-formurlencoded",
-              "params": {
-                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
-              },
-              "href": "https://an.example.link/from/payment/platform",
-              "method": "POST"
-            },
-            "events": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
-                "method": "GET"
-            },
-            "refunds": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
-                "method": "GET"
-            },
-            "cancel": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
-                "method": "POST"
-            }
-          }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
-        },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.payment.email": {
-          "match": "type"
-        },
-        "$.body.payment.address": {
-          "match": "type"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
-        }
-      }
-    },
-    {
-      "description": "cy is supplied in language field",
-      "request": {
-        "method": "POST",
-        "path": "/v1/payments-2",
-        "headers": {
-          "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -267,12 +125,6 @@
           "match": "regex",
           "regex": "^cy$"
         },
-        "$.body.payment.email": {
-          "match": "type"
-        },
-        "$.body.payment.address": {
-          "match": "type"
-        },
         "$.body.payment.payment_id": {
           "match": "type"
         },
@@ -294,10 +146,10 @@
       "description": "en is supplied in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/payments-3",
+        "path": "/v1/payments-2",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -341,7 +193,7 @@
             "description": "New passport application",
             "language": "en",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
-            "payment_provider": "worldpay-empty",
+            "payment_provider": "worldpay",
             "return_url": "https://service-name.gov.uk/transactions/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
@@ -403,9 +255,6 @@
           "match": "regex",
           "regex": "^en$"
         },
-        "$.body.payment.email": {
-          "match": "type"
-        },
         "$.body.payment.payment_id": {
           "match": "type"
         },
@@ -424,13 +273,13 @@
       }
     },
     {
-      "description": "something other than empty string, en or cy supplied in language field",
+      "description": "unsupported value in language field",
       "request": {
         "method": "POST",
-        "path": "/v1/payments-4",
+        "path": "/v1/payments-3",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -454,7 +303,7 @@
           },
           "$.body.language": {
             "match": "regex",
-            "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+            "regex": "^(((?!en)(?!cy)).)+$"
           }
         }
       },
@@ -466,9 +315,9 @@
         "body": {
           "errors": [
             {
-              "language": "zzz",
+              "language": "test",
               "code": "P0102",
-              "description": "invalid attribute value: language. Must be cy or en, or left empty"
+              "description": "invalid attribute value: language. Must be cy or en"
             }
           ]
         }
@@ -476,7 +325,7 @@
       "matchingRules": {
         "$.body.errors[0].language": {
           "match": "regex",
-          "regex": "^(((?!en)(?!cy)(?!\\s)).)+$"
+          "regex": "^(((?!en)(?!cy)).)+$"
         },
         "$.body.errors[0].code": {
           "match": "type"
@@ -487,13 +336,13 @@
       }
     },
     {
-      "description": "language field is missing",
+      "description": "language field is not requested",
       "request": {
         "method": "POST",
-        "path": "/v1/payments-5",
+        "path": "/v1/payments-4",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -517,28 +366,100 @@
         }
       },
       "response": {
-        "status": 400,
+        "status": 201,
         "headers": {
           "Content-Type": "application/json"
         },
         "body": {
-          "errors": [
-            {
-              "field": "language",
-              "code": "P0101",
-              "description": "missing attribute: language. The request you sent is missing the language attribute"
+          "payment": {
+            "amount": 5000,
+            "state": {
+              "status": "created",
+              "finished": false
+            },
+            "reference": "12345",
+
+            "description": "Your Service Description",
+            "language": "en",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay-en",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": {
+            "self": {
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "GET"
+            },
+            "next_url": {
+              "href": "https://an.example.link/from/payment/platform/abcdef01-1234-5678-90ab-abcdef123456",
+              "method": "GET"
+            },
+            "next_url_post": {
+              "type": "application/x-www-formurlencoded",
+              "params": {
+                "chargeTokenId": "abcdef01-1234-5678-90ab-abcdef123456"
+              },
+              "href": "https://an.example.link/from/payment/platform",
+              "method": "POST"
+            },
+            "events": {
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+              "method": "GET"
+            },
+            "refunds": {
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+              "method": "GET"
+            },
+            "cancel": {
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+              "method": "POST"
             }
-          ]
+          }
         }
       },
       "matchingRules": {
-        "$.body.errors[0].field": {
+        "$.body.payment.amount": {
           "match": "type"
         },
-        "$.body.errors[0].code": {
+        "$.body.payment.state": {
           "match": "type"
         },
-        "$.body.errors[0].description": {
+        "$.body.payment.state.status": {
+          "match": "type"
+        },
+        "$.body.payment.state.finished": {
+          "match": "type"
+        },
+        "$.body.payment.state.message": {
+          "match": "type"
+        },
+        "$.body.payment.reference": {
+          "match": "type"
+        },
+        "$.body.payment.description": {
+          "match": "type"
+        },
+        "$.body.payment.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.payment.email": {
+          "match": "type"
+        },
+        "$.body.payment.payment_id": {
+          "match": "type"
+        },
+        "$.body.payment.payment_provider": {
+          "match": "type"
+        },
+        "$.body.payment.return_url": {
+          "match": "type"
+        },
+        "$.body.payment.created_date": {
+          "match": "type"
+        },
+        "$.body._links": {
           "match": "type"
         }
       }
@@ -547,9 +468,9 @@
       "description": "corporate surcharge applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-6/12345",
+        "path": "/v1/payments-5/12345",
         "headers": {
-          "Accept": "application/json",
+          "Content-Type": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
         }
       },
@@ -585,7 +506,7 @@
                 "line2": "line2",
                 "postcode": "AB2 DEF",
                 "city": "city",
-                "country": "UK"
+                "country": "GB"
               }
             },
             "refund_summary": {
@@ -622,9 +543,9 @@
       "description": "corporate surcharge not applied",
       "request": {
         "method": "GET",
-        "path": "/v1/payments-7/12345",
+        "path": "/v1/payments-6/12345",
         "headers": {
-          "Accept": "application/json",
+          "Content-Type": "application/json",
           "Authorization": "Bearer BEARER_TOKEN"
         }
       },
@@ -639,8 +560,8 @@
             "surcharge": 0,
             "total_amount": 1200,
             "state": {
-              "status": "created",
-              "finished": false
+              "status": "success",
+              "finished": true
             },
             "description": "Payment description",
             "reference": "some-reference-to-this-payment",
@@ -710,10 +631,10 @@
       "description": "en is supplied in language field and email/address is pre-populated",
       "request": {
         "method": "POST",
-        "path": "/v1/payments-8",
+        "path": "/v1/payments-7",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -777,7 +698,7 @@
                 "city": "address city",
                 "country": "GB"
               }
-            },
+            }
           },
           "_links": {
             "self": {
@@ -861,10 +782,10 @@
       "description": "en is supplied in language field with delayed capture set to true",
       "request": {
         "method": "POST",
-        "path": "/v1/payments-9",
+        "path": "/v1/payments-8",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
-          "Accept": "application/json"
+          "Content-Type": "application/json"
         },
         "body": {
           "amount": 50000,
@@ -913,7 +834,7 @@
             "language": "en",
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-en",
-            "return_url": "https://service.example.com/12345",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
             "created_date": "2016-01-21T17:15:00Z"
           },
           "_links": {
@@ -990,6 +911,284 @@
           "match": "type"
         },
         "$.body._links": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "returns refund info when refund found",
+      "request": {
+        "method": "POST",
+        "path": "/v1/refunds-1",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "reference": "12345",
+          "description": "New passport application",
+          "card_details" : {
+            "first_digits_card_number": "111",
+            "last_digits_card_number": "222",
+            "name_on_card": "Mr Card",
+            "card_brand": "card-brand",
+            "from_date": "2016-01-21T17:15:00Z",
+            "to_date": "2016-01-23T17:15:00Z"
+          },
+          "page" : "example-page",
+          "display_size" : "example-display-size",
+          "email" : "",
+          "language": "en",
+          "payment_url": {
+            "href": "https://publicapi.example.com/v1/payments/abc123"
+          }
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.card_details.first_digits_card_number": {
+            "match": "type"
+          },
+          "$.body.card_details.last_digits_card_number": {
+            "match": "type"
+          },
+          "$.body.card_details.name_on_card": {
+            "match": "type"
+          },
+          "$.body.card_details.card_brand": {
+            "match": "type"
+          },
+          "$.body.card_details.from_date": {
+            "match": "type"
+          },
+          "$.body.card_details.to_date": {
+            "match": "type"
+          },
+          "$.body.page": {
+            "match": "type"
+          },
+          "$.body.display_size": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment_url.href": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "refund": {
+            "refund_id": "abc123",
+            "refund_summary": {
+              "status": "available",
+              "amount_available": 100,
+              "amount_submitted": 100
+            },
+            "state": {
+              "refund_submitted" : {
+                "amount" : 100,
+                "created_date" : "2016-01-21T17:15:00Z"
+              },
+              "refund_success" : {
+                "amount" : 100,
+                "created_date" : "2016-01-21T17:15:10Z"
+              },
+              "refund_error" : null,
+              "finished": true
+            },
+            "reference": "12345",
+            "description": "Pay for your service",
+            "language": "en",
+            "payment_id": "hu20sqlact5260q2nanm0q8u93",
+            "payment_provider": "worldpay",
+            "return_url": "https://service-name.gov.uk/transactions/12345",
+            "created_date": "2016-01-21T17:15:00Z"
+          },
+          "_links": [
+            {
+              "self": {
+                "href": "https://an.example.link/from/payment/platform",
+                "method": "GET"
+              },
+              "refunds": {
+                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+                "method": "GET"
+              }
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.refund.refund_id": {
+          "match": "type"
+        },
+        "$.body.refund.refund_summary.status": {
+          "match": "type"
+        },
+        "$.body.refund.refund_summary.amount_available": {
+          "match": "type"
+        },
+        "$.body.refund.refund_summary.amount_submitted": {
+          "match": "type"
+        },
+        "$.body.refund.state.refund_submitted.amount": {
+          "match": "type"
+        },
+        "$.body.refund.state.refund_submitted.created_date": {
+          "match": "type"
+        },
+        "$.body.refund.state.refund_success.amount": {
+          "match": "type"
+        },
+        "$.body.refund.state.refund_success.created_date": {
+          "match": "type"
+        },
+        "$.body.refund.state.refund_error": {
+          "match": "type"
+        },
+        "$.body.refund.state.finished": {
+          "match": "type"
+        },
+        "$.body.refund.reference": {
+          "match": "type"
+        },
+        "$.body.refund.description": {
+          "match": "type"
+        },
+        "$.body.refund.language": {
+          "match": "regex",
+          "regex": "^en$"
+        },
+        "$.body.refund.payment_id": {
+          "match": "type"
+        },
+        "$.body.refund.payment_provider": {
+          "match": "type"
+        },
+        "$.body.refund.return_url": {
+          "match": "type"
+        },
+        "$.body.refund.created_date": {
+          "match": "type"
+        },
+        "$.body.refund._links[0]": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "returns empty body when no refund found",
+      "request": {
+        "method": "POST",
+        "path": "/v1/refunds-2",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "reference": "12345",
+          "description": "New passport application",
+          "card_details" : {
+            "first_digits_card_number": "111",
+            "last_digits_card_number": "222",
+            "name_on_card": "Mr Card",
+            "card_brand": "card-brand",
+            "from_date": "2016-01-21T17:15:00Z",
+            "to_date": "2016-01-23T17:15:00Z"
+          },
+          "page" : "example-page",
+          "display_size" : "example-display-size",
+          "email" : "",
+          "language": "en",
+          "payment_url": {
+            "href": "https://publicapi.example.com/v1/payments/abc123"
+          }
+        },
+        "matchingRules": {
+          "$.body.amount": {
+            "match": "type"
+          },
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          },
+          "$.body.card_details.first_digits_card_number": {
+            "match": "type"
+          },
+          "$.body.card_details.last_digits_card_number": {
+            "match": "type"
+          },
+          "$.body.card_details.name_on_card": {
+            "match": "type"
+          },
+          "$.body.card_details.card_brand": {
+            "match": "type"
+          },
+          "$.body.card_details.from_date": {
+            "match": "type"
+          },
+          "$.body.card_details.to_date": {
+            "match": "type"
+          },
+          "$.body.page": {
+            "match": "type"
+          },
+          "$.body.display_size": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment_url.href": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "refund": {},
+          "_links": [
+            {
+              "self": {
+                "href": "https://an.example.link/from/payment/platform",
+                "method": "GET"
+              }
+            }
+          ]
+        }
+      },
+      "matchingRules": {
+        "$.body.refund._links[0]": {
           "match": "type"
         }
       }
