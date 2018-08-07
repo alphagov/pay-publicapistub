@@ -76,3 +76,15 @@ $ curl -d '{"amount": 100,"reference": "12345","description":"New passport appli
 ### Refund information - where no refund is found
 
 $ curl -d '{"amount": 100,"reference": "12345","description":"New passport application","card_details":{"first_digits_card_number":"111","last_digits_card_number":"222","name_on_card":"Mr Card","card_brand":"card-brand","from_date":"2016-01-21T17:15:00Z","to_date":"2016-01-23T17:15:00Z"},"page":"example-page","display_size":"example-display-size","email":"","language":"en","payment_url":{"href":"https://publicapi.example.com/v1/payments/abc123"}}' -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/refunds-2 
+
+### Initiate capture for a previously delayed capture payment
+
+$ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-9/hu20sqlact5260q2nanm0q8u93/capture
+
+### Initiate capture for a payment not set to delayed capture
+
+$ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-10/123notadelayedcapturepayment789/capture
+
+### Initiate capture for a non existing payment
+
+$ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-11/789nonexistingpayment123/capture
