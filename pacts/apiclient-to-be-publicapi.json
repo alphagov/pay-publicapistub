@@ -1192,6 +1192,93 @@
           "match": "type"
         }
       }
+    },
+    {
+      "description": "a capture is initiated, after previously being delayed",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-9/hu20sqlact5260q2nanm0q8u93/capture",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {}
+      },
+      "response": {
+        "status": 204,
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "matchingRules": {}
+    },
+    {
+      "description": "a capture is initiated, for a payment that has not been created as a delayed capture payment",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-10/123notadelayedcapturepayment789/capture",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {}
+      },
+      "response": {
+        "status": 409,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "field": "paymentId",
+          "code": "P1003",
+          "description": "Invalid attribute value: paymentId. Must be in awaiting_capture state"
+        }
+      },
+      "matchingRules": {
+        "$.body.field": {
+          "match": "type"
+        },
+        "$.body.code": {
+          "match": "type"
+        },
+        "$.body.description": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "a capture is initiated, for a payment that does not exist",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-11/789nonexistingpayment123/capture",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {}
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "field": "paymentId",
+          "code": "P1000",
+          "description": "Invalid attribute value: paymentId. paymentId does not exist"
+        }
+      },
+      "matchingRules": {
+        "$.body.field": {
+          "match": "type"
+        },
+        "$.body.code": {
+          "match": "type"
+        },
+        "$.body.description": {
+          "match": "type"
+        }
+      }
     }
   ],
   "metadata": {
