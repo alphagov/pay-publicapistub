@@ -88,3 +88,7 @@ $ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/js
 ### Initiate capture for a non existing payment
 
 $ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-11/789nonexistingpayment123/capture
+
+### Get payment information by card details
+
+$ curl -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' 'http://localhost:8000/v1/payments-12?reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100'

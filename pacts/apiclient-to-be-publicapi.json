@@ -1251,6 +1251,7 @@
       "request": {
         "method": "POST",
         "path": "/v1/payments-11/789nonexistingpayment123/capture",
+        "query": "from_date=2018-05-14T00%3A00%3A00%2B01%3A00&to_date=2018-05-15T00%3A00%3A00%2B01%3A00",
         "headers": {
           "Authorization": "Bearer BEARER_TOKEN",
           "Content-Type": "application/json"
@@ -1276,6 +1277,98 @@
           "match": "type"
         },
         "$.body.description": {
+          "match": "type"
+        }
+      }
+    },
+    {
+      "description": "a request to get transactions, with 'reference', 'state', 'card_brand', 'last_digits_card_number', 'first_digits_card_number', 'from_date', 'to_date', 'page' and 'display_size' specified",
+      "request": {
+        "method": "GET",
+        "path": "/v1/payments-12",
+        "query": "reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100",
+        "headers": {
+          "Authorization": "Bearer BEARER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {}
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "total": 1,
+          "count": 1,
+          "page": 1,
+          "results": [
+            {
+              "amount": 100,
+              "state": {
+                "finished": true,
+                "status": "success"
+              },
+              "description": "ref12345",
+              "reference": "12345",
+              "links": [
+                {
+                  "rel": "self",
+                  "method": "GET",
+                  "href": "https://service-name.gov.uk/v1/payments-12/12345"
+                },
+                {
+                  "rel": "refunds",
+                  "method": "GET",
+                  "href": "https://service-name.gov.uk/v1/payments-12/12345/refunds"
+                }
+              ],
+              "charge_id": "12345",
+              "gateway_transaction_id": "4cddd970-cce9-4bf1-b087-f13db1e199bd",
+              "email": "",
+              "created_date": "2018-05-01T13:27:00.057Z",
+              "card_details": {
+                "last_digits_card_number": "4242",
+                "cardholder_name": "Sample Customer",
+                "expiry_date": "08/23",
+                "card_brand": "Visa"
+              },
+              "transaction_type": "charge"
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "https://service-name.gov.uk/v1/payments-12?reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100"
+            },
+            "last_page": {
+              "href": "https://service-name.gov.uk/v1/payments-12?reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100"
+            },
+            "first_page": {
+              "href": "https://service-name.gov.uk/v1/payments-12?reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100"
+            }
+          }
+        }
+      },
+      "matchingRules": {
+        "$.body.total": {
+          "match": "type"
+        },
+        "$.body.count": {
+          "match": "type"
+        },
+        "$.body.page": {
+          "match": "type"
+        },
+        "$.body.results[0]": {
+          "match": "type"
+        },
+        "$.body._links.self.href": {
+          "match": "type"
+        },
+        "$.body._links.last_page.href": {
+          "match": "type"
+        },
+        "$.body._links.first_page.href": {
           "match": "type"
         }
       }
