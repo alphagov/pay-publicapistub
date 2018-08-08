@@ -88,3 +88,7 @@ $ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/js
 ### Initiate capture for a non existing payment
 
 $ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-11/789nonexistingpayment123/capture
+
+### Get payment information by card details
+
+$ curl -X POST -H 'Authorization: Bearer BEARER_TOKEN' -H 'Content-Type: application/json'  -d '{"reference":"54321","card_details":{"first_digits_card_number": "123456","last_digits_card_number":"1234","name_on_card":"Mr Card"},"from_date":"2016-01-21T17:15:00Z","to_date":"2016-01-23T17:15:00Z","page":"1","display_size":"100","email":"","state":"success"}' http://localhost:8000/v1/payments-12
