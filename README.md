@@ -61,9 +61,9 @@ $ curl -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http
 
 $ curl -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-6/12345
 
-### Create a payment when english language has been specified, as well as an email and postal address supplied
+### Create a payment when english language has been specified, as well as an email and billing address supplied
 
-$ curl -d '{"amount": 50000,"reference": "12345","description": "New passport application","return_url": "https://service-name.gov.uk/transactions/12345","language": "en","email": "foo@bar.com","address": {"line1": "address line 1","line2": "address line 2","postcode": "AB1 2CD","city": "address city","country": "GB"}' -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-7
+$ curl -d '{"amount": 50000,"reference": "12345","description": "New passport application","return_url": "https://service-name.gov.uk/transactions/12345","language": "en","email": "foo@bar.com","billing_address": {"line1": "address line 1","line2": "address line 2","postcode": "AB1 2CD","city": "address city","country": "GB"}' -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' http://localhost:8000/v1/payments-7
 
 ### Creating a payment - `en` (English language) supplied in language field and delayed capture set to `true`
 
