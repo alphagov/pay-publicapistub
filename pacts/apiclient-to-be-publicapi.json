@@ -97,48 +97,48 @@
                 "method": "POST"
             }
           }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
         },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^cy$"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.payment.amount": {
+            "match": "type"
+          },
+          "$.body.payment.state": {
+            "match": "type"
+          },
+          "$.body.payment.state.status": {
+            "match": "type"
+          },
+          "$.body.payment.state.finished": {
+            "match": "type"
+          },
+          "$.body.payment.state.message": {
+            "match": "type"
+          },
+          "$.body.payment.reference": {
+            "match": "type"
+          },
+          "$.body.payment.description": {
+            "match": "type"
+          },
+          "$.body.payment.language": {
+            "match": "regex",
+            "regex": "^cy$"
+          },
+          "$.body.payment.payment_id": {
+            "match": "type"
+          },
+          "$.body.payment.payment_provider": {
+            "match": "type"
+          },
+          "$.body.payment.return_url": {
+            "match": "type"
+          },
+          "$.body.payment.created_date": {
+            "match": "type"
+          },
+          "$.body._links": {
+            "match": "type"
+          }
         }
       }
     },
@@ -215,60 +215,60 @@
               "method": "POST"
             },
             "events": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
-                "method": "GET"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+              "method": "GET"
             },
             "refunds": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
-                "method": "GET"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+              "method": "GET"
             },
             "cancel": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
-                "method": "POST"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+              "method": "POST"
             }
           }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
         },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.payment.amount": {
+            "match": "type"
+          },
+          "$.body.payment.state": {
+            "match": "type"
+          },
+          "$.body.payment.state.status": {
+            "match": "type"
+          },
+          "$.body.payment.state.finished": {
+            "match": "type"
+          },
+          "$.body.payment.state.message": {
+            "match": "type"
+          },
+          "$.body.payment.reference": {
+            "match": "type"
+          },
+          "$.body.payment.description": {
+            "match": "type"
+          },
+          "$.body.payment.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment.payment_id": {
+            "match": "type"
+          },
+          "$.body.payment.payment_provider": {
+            "match": "type"
+          },
+          "$.body.payment.return_url": {
+            "match": "type"
+          },
+          "$.body.payment.created_date": {
+            "match": "type"
+          },
+          "$.body._links": {
+            "match": "type"
+          }
         }
       }
     },
@@ -302,8 +302,7 @@
             "match": "type"
           },
           "$.body.language": {
-            "match": "regex",
-            "regex": "^(((?!en)(?!cy)).)+$"
+            "match": "type"
           }
         }
       },
@@ -315,23 +314,22 @@
         "body": {
           "errors": [
             {
-              "language": "test",
+              "field": "language",
               "code": "P0102",
               "description": "invalid attribute value: language. Must be cy or en"
             }
           ]
-        }
-      },
-      "matchingRules": {
-        "$.body.errors[0].language": {
-          "match": "regex",
-          "regex": "^(((?!en)(?!cy)).)+$"
         },
-        "$.body.errors[0].code": {
-          "match": "type"
-        },
-        "$.body.errors[0].description": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.errors[0].language": {
+            "match": "type"
+          },
+          "$.body.errors[0].code": {
+            "match": "type"
+          },
+          "$.body.errors[0].description": {
+            "match": "type"
+          }
         }
       }
     },
@@ -416,51 +414,51 @@
               "method": "POST"
             }
           }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
         },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.payment.email": {
-          "match": "type"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.payment.amount": {
+            "match": "type"
+          },
+          "$.body.payment.state": {
+            "match": "type"
+          },
+          "$.body.payment.state.status": {
+            "match": "type"
+          },
+          "$.body.payment.state.finished": {
+            "match": "type"
+          },
+          "$.body.payment.state.message": {
+            "match": "type"
+          },
+          "$.body.payment.reference": {
+            "match": "type"
+          },
+          "$.body.payment.description": {
+            "match": "type"
+          },
+          "$.body.payment.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment.email": {
+            "match": "type"
+          },
+          "$.body.payment.payment_id": {
+            "match": "type"
+          },
+          "$.body.payment.payment_provider": {
+            "match": "type"
+          },
+          "$.body.payment.return_url": {
+            "match": "type"
+          },
+          "$.body.payment.created_date": {
+            "match": "type"
+          },
+          "$.body._links": {
+            "match": "type"
+          }
         }
       }
     },
@@ -730,51 +728,51 @@
                 "method": "POST"
             }
           }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
         },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.payment.email": {
-          "match": "type"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.payment.amount": {
+            "match": "type"
+          },
+          "$.body.payment.state": {
+            "match": "type"
+          },
+          "$.body.payment.state.status": {
+            "match": "type"
+          },
+          "$.body.payment.state.finished": {
+            "match": "type"
+          },
+          "$.body.payment.state.message": {
+            "match": "type"
+          },
+          "$.body.payment.reference": {
+            "match": "type"
+          },
+          "$.body.payment.description": {
+            "match": "type"
+          },
+          "$.body.payment.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment.email": {
+            "match": "type"
+          },
+          "$.body.payment.payment_id": {
+            "match": "type"
+          },
+          "$.body.payment.payment_provider": {
+            "match": "type"
+          },
+          "$.body.payment.return_url": {
+            "match": "type"
+          },
+          "$.body.payment.created_date": {
+            "match": "type"
+          },
+          "$.body._links": {
+            "match": "type"
+          }
         }
       }
     },
@@ -855,63 +853,63 @@
               "method": "POST"
             },
             "events": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
-                "method": "GET"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/events",
+              "method": "GET"
             },
             "refunds": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
-                "method": "GET"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/refunds",
+              "method": "GET"
             },
             "cancel": {
-                "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
-                "method": "POST"
+              "href": "https://an.example.link/from/payment/platform/hu20sqlact5260q2nanm0q8u93/cancel",
+              "method": "POST"
             }
           }
-        }
-      },
-      "matchingRules": {
-        "$.body.payment.amount": {
-          "match": "type"
         },
-        "$.body.payment.state": {
-          "match": "type"
-        },
-        "$.body.payment.state.status": {
-          "match": "type"
-        },
-        "$.body.payment.state.finished": {
-          "match": "type"
-        },
-        "$.body.payment.state.message": {
-          "match": "type"
-        },
-        "$.body.payment.reference": {
-          "match": "type"
-        },
-        "$.body.payment.description": {
-          "match": "type"
-        },
-        "$.body.payment.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.payment.email": {
-          "match": "type"
-        },
-        "$.body.payment.payment_id": {
-          "match": "type"
-        },
-        "$.body.payment.payment_provider": {
-          "match": "type"
-        },
-        "$.body.payment.return_url": {
-          "match": "type"
-        },
-        "$.body.payment.created_date": {
-          "match": "type"
-        },
-        "$.body._links": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.payment.amount": {
+            "match": "type"
+          },
+          "$.body.payment.state": {
+            "match": "type"
+          },
+          "$.body.payment.state.status": {
+            "match": "type"
+          },
+          "$.body.payment.state.finished": {
+            "match": "type"
+          },
+          "$.body.payment.state.message": {
+            "match": "type"
+          },
+          "$.body.payment.reference": {
+            "match": "type"
+          },
+          "$.body.payment.description": {
+            "match": "type"
+          },
+          "$.body.payment.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.payment.email": {
+            "match": "type"
+          },
+          "$.body.payment.payment_id": {
+            "match": "type"
+          },
+          "$.body.payment.payment_provider": {
+            "match": "type"
+          },
+          "$.body.payment.return_url": {
+            "match": "type"
+          },
+          "$.body.payment.created_date": {
+            "match": "type"
+          },
+          "$.body._links": {
+            "match": "type"
+          }
         }
       }
     },
@@ -929,8 +927,8 @@
           "reference": "12345",
           "description": "New passport application",
           "card_details" : {
-            "first_digits_card_number": "111",
-            "last_digits_card_number": "222",
+            "first_digits_card_number": "123456",
+            "last_digits_card_number": "1234",
             "name_on_card": "Mr Card",
             "card_brand": "card-brand",
             "from_date": "2016-01-21T17:15:00Z",
@@ -1004,15 +1002,15 @@
               "amount_submitted": 100
             },
             "state": {
-              "refund_submitted" : {
-                "amount" : 100,
-                "created_date" : "2016-01-21T17:15:00Z"
+              "refund_submitted": {
+                "amount": 100,
+                "created_date": "2016-01-21T17:15:00Z"
               },
-              "refund_success" : {
-                "amount" : 100,
-                "created_date" : "2016-01-21T17:15:10Z"
+              "refund_success": {
+                "amount": 100,
+                "created_date": "2016-01-21T17:15:10Z"
               },
-              "refund_error" : null,
+              "refund_error": null,
               "finished": true
             },
             "reference": "12345",
@@ -1035,63 +1033,63 @@
               }
             }
           ]
-        }
-      },
-      "matchingRules": {
-        "$.body.refund.refund_id": {
-          "match": "type"
         },
-        "$.body.refund.refund_summary.status": {
-          "match": "type"
-        },
-        "$.body.refund.refund_summary.amount_available": {
-          "match": "type"
-        },
-        "$.body.refund.refund_summary.amount_submitted": {
-          "match": "type"
-        },
-        "$.body.refund.state.refund_submitted.amount": {
-          "match": "type"
-        },
-        "$.body.refund.state.refund_submitted.created_date": {
-          "match": "type"
-        },
-        "$.body.refund.state.refund_success.amount": {
-          "match": "type"
-        },
-        "$.body.refund.state.refund_success.created_date": {
-          "match": "type"
-        },
-        "$.body.refund.state.refund_error": {
-          "match": "type"
-        },
-        "$.body.refund.state.finished": {
-          "match": "type"
-        },
-        "$.body.refund.reference": {
-          "match": "type"
-        },
-        "$.body.refund.description": {
-          "match": "type"
-        },
-        "$.body.refund.language": {
-          "match": "regex",
-          "regex": "^en$"
-        },
-        "$.body.refund.payment_id": {
-          "match": "type"
-        },
-        "$.body.refund.payment_provider": {
-          "match": "type"
-        },
-        "$.body.refund.return_url": {
-          "match": "type"
-        },
-        "$.body.refund.created_date": {
-          "match": "type"
-        },
-        "$.body.refund._links[0]": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.refund.refund_id": {
+            "match": "type"
+          },
+          "$.body.refund.refund_summary.status": {
+            "match": "type"
+          },
+          "$.body.refund.refund_summary.amount_available": {
+            "match": "type"
+          },
+          "$.body.refund.refund_summary.amount_submitted": {
+            "match": "type"
+          },
+          "$.body.refund.state.refund_submitted.amount": {
+            "match": "type"
+          },
+          "$.body.refund.state.refund_submitted.created_date": {
+            "match": "type"
+          },
+          "$.body.refund.state.refund_success.amount": {
+            "match": "type"
+          },
+          "$.body.refund.state.refund_success.created_date": {
+            "match": "type"
+          },
+          "$.body.refund.state.refund_error": {
+            "match": "type"
+          },
+          "$.body.refund.state.finished": {
+            "match": "type"
+          },
+          "$.body.refund.reference": {
+            "match": "type"
+          },
+          "$.body.refund.description": {
+            "match": "type"
+          },
+          "$.body.refund.language": {
+            "match": "regex",
+            "regex": "^en$"
+          },
+          "$.body.refund.payment_id": {
+            "match": "type"
+          },
+          "$.body.refund.payment_provider": {
+            "match": "type"
+          },
+          "$.body.refund.return_url": {
+            "match": "type"
+          },
+          "$.body.refund.created_date": {
+            "match": "type"
+          },
+          "$.body.refund._links[0]": {
+            "match": "type"
+          }
         }
       }
     },
@@ -1109,8 +1107,8 @@
           "reference": "12345",
           "description": "New passport application",
           "card_details" : {
-            "first_digits_card_number": "111",
-            "last_digits_card_number": "222",
+            "first_digits_card_number": "123456",
+            "last_digits_card_number": "1234",
             "name_on_card": "Mr Card",
             "card_brand": "card-brand",
             "from_date": "2016-01-21T17:15:00Z",
@@ -1122,51 +1120,51 @@
           "language": "en",
           "payment_url": {
             "href": "https://publicapi.example.com/v1/payments/abc123"
-          }
-        },
-        "matchingRules": {
-          "$.body.amount": {
-            "match": "type"
           },
-          "$.body.reference": {
-            "match": "type"
-          },
-          "$.body.description": {
-            "match": "type"
-          },
-          "$.body.card_details.first_digits_card_number": {
-            "match": "type"
-          },
-          "$.body.card_details.last_digits_card_number": {
-            "match": "type"
-          },
-          "$.body.card_details.name_on_card": {
-            "match": "type"
-          },
-          "$.body.card_details.card_brand": {
-            "match": "type"
-          },
-          "$.body.card_details.from_date": {
-            "match": "type"
-          },
-          "$.body.card_details.to_date": {
-            "match": "type"
-          },
-          "$.body.page": {
-            "match": "type"
-          },
-          "$.body.display_size": {
-            "match": "type"
-          },
-          "$.body.email": {
-            "match": "type"
-          },
-          "$.body.language": {
-            "match": "regex",
-            "regex": "^en$"
-          },
-          "$.body.payment_url.href": {
-            "match": "type"
+          "matchingRules": {
+            "$.body.amount": {
+              "match": "type"
+            },
+            "$.body.reference": {
+              "match": "type"
+            },
+            "$.body.description": {
+              "match": "type"
+            },
+            "$.body.card_details.first_digits_card_number": {
+              "match": "type"
+            },
+            "$.body.card_details.last_digits_card_number": {
+              "match": "type"
+            },
+            "$.body.card_details.name_on_card": {
+              "match": "type"
+            },
+            "$.body.card_details.card_brand": {
+              "match": "type"
+            },
+            "$.body.card_details.from_date": {
+              "match": "type"
+            },
+            "$.body.card_details.to_date": {
+              "match": "type"
+            },
+            "$.body.page": {
+              "match": "type"
+            },
+            "$.body.display_size": {
+              "match": "type"
+            },
+            "$.body.email": {
+              "match": "type"
+            },
+            "$.body.language": {
+              "match": "regex",
+              "regex": "^en$"
+            },
+            "$.body.payment_url.href": {
+              "match": "type"
+            }
           }
         }
       },
@@ -1175,22 +1173,8 @@
         "headers": {
           "Content-Type": "application/json"
         },
-        "body": {
-          "refund": {},
-          "_links": [
-            {
-              "self": {
-                "href": "https://an.example.link/from/payment/platform",
-                "method": "GET"
-              }
-            }
-          ]
-        }
-      },
-      "matchingRules": {
-        "$.body.refund._links[0]": {
-          "match": "type"
-        }
+        "body": {},
+        "matchingRules": {}
       }
     },
     {
@@ -1208,9 +1192,9 @@
         "status": 204,
         "headers": {
           "Content-Type": "application/json"
-        }
-      },
-      "matchingRules": {}
+        },
+        "matchingRules": {}
+      }
     },
     {
       "description": "a capture is initiated, for a payment that has not been created as a delayed capture payment",
@@ -1232,17 +1216,17 @@
           "field": "paymentId",
           "code": "P1003",
           "description": "Invalid attribute value: paymentId. Must be in awaiting_capture state"
-        }
-      },
-      "matchingRules": {
-        "$.body.field": {
-          "match": "type"
         },
-        "$.body.code": {
-          "match": "type"
-        },
-        "$.body.description": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.field": {
+            "match": "type"
+          },
+          "$.body.code": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          }
         }
       }
     },
@@ -1266,17 +1250,171 @@
           "field": "paymentId",
           "code": "P1000",
           "description": "Invalid attribute value: paymentId. paymentId does not exist"
+        },
+        "matchingRules": {
+          "$.body.field": {
+            "match": "type"
+          },
+          "$.body.code": {
+            "match": "type"
+          },
+          "$.body.description": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to get transactions, with 'reference', 'state', 'card_brand', 'name_on_card', 'last_digits_card_number', 'first_digits_card_number', 'from_date', 'to_date', 'page' and 'display_size' specified",
+      "request": {
+        "method": "POST",
+        "path": "/v1/payments-12",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer BEARER_TOKEN"
+        },
+        "body": {
+          "reference": "54321",
+          "card_details" : {
+            "first_digits_card_number": "123456",
+            "last_digits_card_number": "1234",
+            "name_on_card": "Mr Card"
+          },
+          "from_date": "2016-01-21T17:15:00Z",
+          "to_date": "2016-01-23T17:15:00Z",
+          "page" : "1",
+          "display_size" : "100",
+          "email" : "",
+          "state" : "success"
+        },
+        "matchingRules": {
+          "$.body.reference": {
+            "match": "type"
+          },
+          "$.body.card_details.first_digits_card_number": {
+            "match": "regex",
+            "regex": "^[0-9]{6}$"
+          },
+          "$.body.card_details.last_digits_card_number": {
+            "match": "regex",
+            "regex": "^[0-9]{4}$"
+          },
+          "$.body.card_details.name_on_card": {
+            "match": "type"
+          },
+          "$.body.from_date": {
+            "match": "type"
+          },
+          "$.body.to_date": {
+            "match": "type"
+          },
+          "$.body.page": {
+            "match": "type"
+          },
+          "$.body.display_size": {
+            "match": "type"
+          },
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.state": {
+            "match": "type"
+          }
         }
       },
-      "matchingRules": {
-        "$.body.field": {
-          "match": "type"
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
         },
-        "$.body.code": {
-          "match": "type"
+        "body": {
+          "total": 1,
+          "count": 1,
+          "page": 1,
+          "results": [
+            {
+              "amount": 1200,
+              "state": {
+                "status": "success",
+                "finished": true
+              },
+              "description": "Your Service Description",
+              "reference": "54321",
+              "links": [
+                {
+                  "rel": "self",
+                  "method": "GET",
+                  "href": "https://service-name.gov.uk/v1/payments-12/12345"
+                },
+                {
+                  "rel": "refunds",
+                  "method": "GET",
+                  "href": "https://service-name.gov.uk/v1/payments-12/12345/refunds"
+                }
+              ],
+              "card_details": {
+                "first_digits_card_number": "123456",
+                "last_digits_card_number": "1234",
+                "cardholder_name": "Mr Card",
+                "expiry_date": "12/22",
+                "card_brand": "card-brand"
+              },
+              "email": "your email",
+              "payment_id": "hu20sqlact5260q2nanm0q8u93",
+              "payment_provider": "worldpay",
+              "return_url": "http://your.service.domain/your-reference",
+              "created_date": "2016-01-21T17:15:00Z"
+            }
+          ]
         },
-        "$.body.description": {
-          "match": "type"
+        "matchingRules": {
+          "$.body.results[0].amount": {
+            "match": "type"
+          },
+          "$.body.results[0].state.status": {
+            "match": "type"
+          },
+          "$.body.results[0].state.finished": {
+            "match": "type"
+          },
+          "$.body.results[0].description": {
+            "match": "type"
+          },
+          "$.body.results[0].reference": {
+            "match": "type"
+          },
+          "$.body.results[0].links[0].href": {
+            "match": "type"
+          },
+          "$.body.results[0].links[1].href": {
+            "match": "type"
+          },
+          "$.body.results[0].card_details.first_digits_card_number": {
+            "match": "regex",
+            "regex": "^[0-9]{6}$"
+          },
+          "$.body.results[0].card_details.last_digits_card_number": {
+            "match": "regex",
+            "regex": "^[0-9]{4}$"
+          },
+          "$.body.results[0].card_details.cardholder_name": {
+            "match": "type"
+          },
+          "$.body.results[0].email": {
+            "match": "type"
+          },
+          "$.body.results[0].payment_id": {
+            "match": "type"
+          },
+          "$.body.results[0].payment_provider": {
+            "match": "type"
+          },
+          "$.body.results[0].return_url": {
+            "match": "type"
+          },
+          "$.body.results[0].created_date": {
+            "match": "type"
+          }
         }
       }
     }
