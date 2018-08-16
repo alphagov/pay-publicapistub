@@ -91,4 +91,4 @@ $ curl -X POST -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/js
 
 ### Get payment information by card details
 
-$ curl -X POST -H 'Authorization: Bearer BEARER_TOKEN' -H 'Content-Type: application/json'  -d '{"reference":"54321","card_details":{"first_digits_card_number": "123456","last_digits_card_number":"1234","name_on_card":"Mr Card"},"from_date":"2016-01-21T17:15:00Z","to_date":"2016-01-23T17:15:00Z","page":"1","display_size":"100","email":"","state":"success"}' http://localhost:8000/v1/payments-12
+$ curl -H 'Authorization: BEARER_TOKEN' -H 'Content-Type: application/json' 'http://localhost:8000/v1/payments-12?reference=12345&state=success&card_brand=visa&last_digits_card_number=4242&first_digits_card_number=424242&from_date=2018-05-03T00%3A00%3A00.000Z&to_date=2018-05-03T00%3A00%3A01.000Z&page=1&display_size=100'
