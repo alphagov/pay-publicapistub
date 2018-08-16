@@ -833,7 +833,8 @@
             "payment_id": "hu20sqlact5260q2nanm0q8u93",
             "payment_provider": "worldpay-en",
             "return_url": "https://service-name.gov.uk/transactions/12345",
-            "created_date": "2016-01-21T17:15:00Z"
+            "created_date": "2016-01-21T17:15:00Z",
+            "delayed_capture": true
           },
           "_links": {
             "self": {
@@ -906,6 +907,9 @@
           },
           "$.body.payment.created_date": {
             "match": "type"
+          },
+          "$.body.payment.delay_capture": {
+            "match": "type",
           },
           "$.body._links": {
             "match": "type"
