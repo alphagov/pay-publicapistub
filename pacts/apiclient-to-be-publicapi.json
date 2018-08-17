@@ -918,7 +918,7 @@
             "match": "type"
           },
           "$.body.payment.delay_capture": {
-            "match": "type",
+            "match": "type"
           },
           "$.body._links": {
             "match": "type"
