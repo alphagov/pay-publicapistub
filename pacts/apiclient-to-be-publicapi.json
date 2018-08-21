@@ -307,7 +307,7 @@
         }
       },
       "response": {
-        "status": 400,
+        "status": 422,
         "headers": {
           "Content-Type": "application/json"
         },
@@ -316,7 +316,7 @@
             {
               "field": "language",
               "code": "P0102",
-              "description": "invalid attribute value: language. Must be cy or en"
+              "description": "Invalid attribute value: language. Must be \"en\" or \"cy\""
             }
           ]
         },
