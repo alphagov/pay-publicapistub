@@ -1,4 +1,7 @@
 # pay-publicapistub
+
+> As of May 2022 this repository is no longer actively maintained by the GOV.UK Pay team.
+
 The public api consumer driven contract testing stubs, and packaged Docker image
 
 ## Local image build
